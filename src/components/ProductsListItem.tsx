@@ -1,8 +1,6 @@
 import { StyleSheet, Image } from 'react-native';
-
-import EditScreenInfo from '@components/EditScreenInfo';
-import { Text, View } from '@components/Themed';
-import Colors from '@/constants/Colors';
+import { Text, View } from '../components/Themed';
+import Colors from '../constants/Colors';
 import { Product } from '../types';
 
 export const defaultPizzaImage = 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png';
@@ -17,7 +15,9 @@ const ProductListItem = ({product}: ProductListItemProps) => {
       <Image 
       source ={{ uri: product.image || defaultPizzaImage}} // if there is no image, use defaultPizzaImage
       style={styles.image}
+      resizeMode='contain'
       />
+
       <Text style={styles.title}>{product.name}</Text>
       <Text style={styles.price}>{product.price}TL</Text>
     </View>
@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 20,
+    flex: 1, // take the whole space, share equally 2 items in a row, if we delete one of them, the other will take the whole space
+    maxWidth: '50%', // 2 items in a row, to solve the problem of 1 item in a row, we use maxWidth
   },
 
   image:{
