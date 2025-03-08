@@ -13,7 +13,7 @@ type ProductListItemProps = {
 const ProductListItem = ({product}: ProductListItemProps) => {
 	return (
     // use a Dynamic path parameter by renaming with id and when linking to it, send the product id as part of the link
-    <Link href={`/(tabs)/menu/${product.id}` as `/modal?${string}`} asChild>
+    <Link href={`/menu/${product.id}` as `/modal?${string}`} asChild>
     <Pressable style={styles.container}>
       <Image 
       source ={{ uri: product.image || defaultPizzaImage}} // if there is no image, use defaultPizzaImage
